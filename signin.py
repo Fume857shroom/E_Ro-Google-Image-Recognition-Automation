@@ -3,9 +3,11 @@ from browser_locator import get_system_chrome_path
 import os
 
 def manual_google_login():
-    # 确保保存数据的文件夹与主程序完全一致
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    user_data_dir = os.path.join(current_dir, "chrome_data")
+    base_dir = os.environ.get('LOCALAPPDATA', os.path.expanduser('~'))
+    user_data_dir = os.path.join(base_dir, "GoogleLensAuto_Data", "chrome_data")
+    os.makedirs(user_data_dir, exist_ok=True)
+
+    print(f"📁 Chrome 用户数据目录已固定为: {user_data_dir}")
 
     print("🚀 启动专属登录浏览器...")
     chrome_path = get_system_chrome_path()

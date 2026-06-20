@@ -9,7 +9,7 @@ def get_system_chrome_path():
         try:
             import winreg
             key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
-                                 r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe")
+                r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe")
             path, _ = winreg.QueryValueEx(key, "")
             return path
         except WindowsError:
@@ -19,7 +19,7 @@ def get_system_chrome_path():
         paths = [
             os.path.join(os.environ.get("PROGRAMFILES", "C:\\Program Files"), r"Google\Chrome\Application\chrome.exe"),
             os.path.join(os.environ.get("PROGRAMFILES(X86)", "C:\\Program Files (x86)"),
-                         r"Google\Chrome\Application\chrome.exe"),
+                r"Google\Chrome\Application\chrome.exe"),
             os.path.join(os.environ.get("LOCALAPPDATA", ""), r"Google\Chrome\Application\chrome.exe")
         ]
         for p in paths:
